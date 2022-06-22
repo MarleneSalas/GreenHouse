@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GreenHouse.Views.DetallesView" Background="#D6F5CB">
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="Body"></Setter>
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <!--<Image Source="https://th.bing.com/th/id/OIP.IjyHHtqt3OxO6_RHagJn1AHaG7?pid=ImgDetrs=1"></Image>-->
+                <StackLayout Margin="15,15,15,30" Padding="10,15" Background="Beige">
+                <Image Margin="0,10,0,0" Source="{Binding Fotografia}" WidthRequest="250"
+                          ></Image>
+                <Label FontSize="Title" TextColor="Black" Text="{Binding NombreComun}" HorizontalOptions="Center" FontAttributes="Bold"></Label>
+                    <Label  FontSize="Subtitle" Text="{Binding NombreCientifico}" HorizontalOptions="Center" FontAttributes="Italic"></Label>
+                    <StackLayout Orientation="Horizontal">
+                    <Label Margin="0,5" FontAttributes="Bold" TextColor="Black">Tipo:</Label>
+                    <Label Text="{Binding Tipo}" Margin="0,5" TextColor="Black"></Label>  
+                    </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Margin="0,5" FontAttributes="Bold" TextColor="Black">Altura:</Label>
+                    <Label Text="{Binding Altura}" Margin="0,5" TextColor="Black"></Label>
+                </StackLayout>
+                <Label FontAttributes="Bold" TextColor="Black">Observaciones:</Label>
+                <Label Text="{Binding Observaciones}" TextColor="Black"></Label>
+            </StackLayout>
+          
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

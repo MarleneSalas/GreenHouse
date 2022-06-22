@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GreenHouse.Views.PrincipalView" 
+             xmlns:ViewModels="clr-namespace:GreenHouse.ViewModels"
+             Background="#D6F5CB"
+             >
+    <!--BackgroundImageSource="https://64.media.tumblr.com/0d013110e5fb3db2904f50972837a46d/tumblr_obmsjz5rAD1tp0uyco2_1280.jpg"-->
+    <!--<ContentPage.ToolbarItems></ContentPage.ToolbarItems>
+    <StackLayout Padding="10,15">
+        <Label TextColor="White" FontAttributes="Bold" HorizontalOptions="Center" FontSize="Title">GreenHouse</Label>
+        <Image Source="https://th.bing.com/th/id/OIP.IjyHHtqt3OxO6_RHagJn1AHaG7?pid=ImgDetrs=1"></Image>
+    </StackLayout>-->
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Agregar" IconImageSource="https://cdn-icons.flaticon.com/png/512/2331/premium/2331242.png?token=exp=1655877951~hmac=1dd96042026a1c186b98fef843841038" Command="{Binding CambiarVistaCommand}"
+                     CommandParameter="agregar"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.BindingContext>
+        <ViewModels:PlantaViewModel x:Name="pvm"></ViewModels:PlantaViewModel>
+    </ContentPage.BindingContext>
+    
+        <StackLayout >
+            <Label  FontAttributes="Bold" HorizontalOptions="Center" FontSize="Large" Margin="10" Padding="5" TextColor="Black">GreenHouse</Label>
+        <ScrollView>    
+            <CollectionView ItemsSource="{Binding Invernadero}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                        <StackLayout Padding="15" >
+                            <StackLayout.GestureRecognizers Command="{Binding Source={x:Reference pvm}, Path=VerDetallesCommand}" CommandParameter="{Binding .}" >
+                                <TapGestureRecognizer Command="{Binding Source={x:Reference pvm}, Path=VerDetallesCommand}" CommandParameter="{Binding .}">
+                                </TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                            <StackLayout Background="White" Padding="10" >
+                                <Image HorizontalOptions="Center"  Source="{Binding Fotografia}" WidthRequest="80"></Image>
+                            <Label HorizontalOptions="Center" Text="{Binding NombreComun}" FontSize="Medium"  TextColor="DarkGreen"></Label>
+                            <Label HorizontalOptions="Center"  Text="{Binding NombreCientifico}" FontSize="Subtitle" TextColor="DarkGreen" FontAttributes="Italic"></Label>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="5">
+                                <Button Text="Eliminar" BackgroundColor="DarkRed" TextColor="White"
+                                 CommandParameter="{Binding .}"  Clicked="Button_Clicked"></Button>
+                                    <!--Command="{Binding Source={x:Reference pvm}, Path=EliminarCommand}"-->
+                                    <Button Text="Editar" BackgroundColor="DarkGreen" TextColor="White" 
+                                Command="{Binding Source={x:Reference pvm}, Path=EditarCommand}" CommandParameter="{Binding .}"></Button>
+                            </StackLayout>
+                            </StackLayout>
+                            
+                        </StackLayout>
+                    <!--<Grid  Margin="5">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={x:Reference pvm}, Path=VerDetallesCommand}" CommandParameter="{Binding .}"/>
+                        </Grid.GestureRecognizers>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                            <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout  Grid.Row="0" Grid.ColumnSpan="2" HorizontalOptions="Center">
+                                <Image  Source="{Binding Fotografia}"></Image>
+                            <Label Text="{Binding NombreComun}" FontSize="Title" TextColor="DodgerBlue"></Label>
+                            <Label Text="{Binding NombreCientifico}" FontSize="Subtitle" TextColor="LightCoral" ></Label>
+                        </StackLayout>
+                        --><!--<Label Grid.Row="1" Text="{Binding Tipo}" Grid.ColumnSpan="2" TextColor="LightCoral"></Label>--><!--
+                        <Button Text="Eliminar" Grid.Row="2" AnchorX="100"
+                                BackgroundColor="Red" TextColor="White"
+                                Command="{Binding Source={x:Reference pvm}, Path=EliminarCommand}" CommandParameter="{Binding .}"></Button>
+                        <Button Text="Editar" Grid.Row="2" Grid.Column="1" 
+                                BackgroundColor="Green" TextColor="White"
+                                Command="{Binding Source={x:Reference pvm}, Path=ModificarCommand}" CommandParameter="{Binding .}"></Button>
+                    </Grid>-->
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+            </ScrollView>
+        </StackLayout>
+    
+</ContentPage>

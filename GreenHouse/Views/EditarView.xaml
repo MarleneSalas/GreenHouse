@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GreenHouse.Views.EditarView"
+              BackgroundImageSource="https://64.media.tumblr.com/d29b3881ff35a3e533d72599140e3a7d/tumblr_obmsjz5rAD1tp0uyco1_640.jpg">
+    <ContentPage.Resources>
+        <Style TargetType="Entry">
+            <Setter Property="FontSize" Value="Body"></Setter>
+            <Setter Property="Margin" Value="0,0,0,8"></Setter>
+            <Setter Property="Background" Value="Beige"></Setter>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="Body"></Setter>
+            <Setter Property="FontAttributes" Value="Bold"></Setter>
+            <Setter Property="TextColor" Value="DarkGreen"></Setter>
+        </Style>
+    </ContentPage.Resources>
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Guardar cambios" IconImageSource="https://cdn-icons.flaticon.com/png/512/2511/premium/2511483.png?token=exp=1655926858~hmac=ca7ee7dae7a43773cb97bf6d1e862d37" Command="{Binding GuardarCommand}"/>
+    </ContentPage.ToolbarItems>
+
+
+    <StackLayout Margin="5">
+        <Label HorizontalOptions="Center" TextColor="Black" FontSize="Title" Margin="0,10,0,10" >Editar Datos</Label>
+        <ScrollView>
+            <StackLayout Background="White" Padding="5">
+                <Label>Nombre Común:</Label>
+                <Entry Text="{Binding Planta.NombreComun}"></Entry>
+                <Label>Nombre Científico:</Label>
+                <Entry Text="{Binding Planta.NombreCientifico}"></Entry>
+
+                <Label>Tipo:</Label>
+                <Picker Background="Beige " Title="Selecciona el tipo de planta..." SelectedItem="{Binding Planta.Tipo}" FontSize="Body" Margin="0,0,0,8">
+                    <Picker.Items>
+                        <x:String>Inferior</x:String>
+                        <x:String>Superior</x:String>
+                    </Picker.Items>
+                </Picker>
+                <Label>Altura:</Label>
+                <Entry Text="{Binding Planta.Altura}"></Entry>
+                <Label>Observaciones:</Label>
+                <Entry  Text="{Binding Planta.Observaciones}"></Entry>
+                <Label>Fotografía(URL):</Label>
+                <Entry  Text="{Binding Planta.Fotografia}"></Entry>
+                <Label TextColor="red" Text="{Binding Mensaje}"></Label>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+</ContentPage>
